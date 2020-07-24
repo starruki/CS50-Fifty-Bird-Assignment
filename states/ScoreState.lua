@@ -34,11 +34,11 @@ function ScoreState:render()
     love.graphics.printf('Score: ' .. tostring(self.score), 0, 100, VIRTUAL_WIDTH, 'center')
     
     if self.score < 4 then
-        love.graphics.draw(love.graphics.newImage('bronze-medal.jpg'), VIRTUAL_WIDTH/2 - 25, 110)
+        love.graphics.draw(love.graphics.newImage('bronze-medal.jpg'), VIRTUAL_WIDTH/2 - 25, 110, 0.25, 0.25)
     elseif self.score < 7 then
-        love.graphics.draw(love.graphics.newImage('silver-medal.jpg'), VIRTUAL_WIDTH/2 - 25, 110)
+        love.graphics.draw(love.graphics.newImage('silver-medal.jpg'), VIRTUAL_WIDTH/2 - 25, 110, 0.25, 0.25)
     else
-        love.graphics.draw(love.graphics.newImage('gold-medal.jpg'), VIRTUAL_WIDTH/2 - 25, 110)
+        love.graphics.draw(love.graphics.newImage('gold-medal.jpg'), VIRTUAL_WIDTH/2 - 25, 110, 0.25, 0.25)
     end 
     love.graphics.printf('Press Enter to Play Again!', 0, 160, VIRTUAL_WIDTH, 'center')
 end
