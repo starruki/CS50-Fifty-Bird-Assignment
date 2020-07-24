@@ -30,8 +30,9 @@ function PlayState:init()
 end
 
 function PlayState:update(dt)
-    -- update timer for pipe spawning
-    self.timer = self.timer + dt
+    if self.pause == false then
+      -- update timer for pipe spawning
+      self.timer = self.timer + dt
  
     -- spawn a new pipe pair after a certain amount of time, which is rng
     if self.timer > self.delay then
@@ -111,37 +112,20 @@ function PlayState:update(dt)
         self.pause = true
         scrolling = false
         self.bird.y = self.bird.y;
-        sounds = ['pause']:play()
+        sounds['pause']:play()
     end
-else
-    if love.keyboard.wasPressed('p') then
-        self.pause = false
-        scrolling = true
-        sounds = ['pause']:play()
+    else
+        if love.keyboard.wasPressed('p') then
+            self.pause = false
+            scrolling = true
+            sounds['pause']:play()
+        end
     end
 end
 
 function PlayState:render()
-
-    if self.pause = true then
-        -- render in the bird and pipes from the last playState (everything from before)
-        for k, pair in pairs(self.pipePairs) do
-            pair:render()
-        end
-        
-        self.bird:render()
-
-        love.graphics.setFont(flappyFont)
-        love.graphics.print('Score' .. tostring(self.score), 8, 8)
-
-        -- render in the paused menu
-        love.graphics.print('Paused...', VIRTUAL_WIDTH - 140, 8)
-        
-        love.graphics.setFont(mediumFont)
-        love.graphics.print('Please press p to resume', VIRTUAL_WIDTH - 140, 40)
-    end
-else
-
+    
+    -- render pipes and bird and score
     for k, pair in pairs(self.pipePairs) do
         pair:render()
     end
@@ -150,6 +134,14 @@ else
     love.graphics.print('Score: ' .. tostring(self.score), 8, 8)
 
     self.bird:render()
+
+    if self.pause = true then
+        -- render in the paused menu
+        love.graphics.print('Paused...', VIRTUAL_WIDTH - 140, 8)
+        
+        love.graphics.setFont(mediumFont)
+        love.graphics.print('Please press p to resume', VIRTUAL_WIDTH - 140, 40)
+    end 
     
 end
 
