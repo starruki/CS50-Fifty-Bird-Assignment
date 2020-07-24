@@ -140,7 +140,7 @@ function PlayState:render()
         love.graphics.print('Paused...', VIRTUAL_WIDTH - 140, 8)
         
         love.graphics.setFont(mediumFont)
-        love.graphics.print('Please press p to resume', VIRTUAL_WIDTH - 140, 40)
+        love.graphics.print('Please press p to resume', VIRTUAL_WIDTH - 200, 40)
     end 
     
 end
