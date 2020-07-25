@@ -106,6 +106,11 @@ function PlayState:update(dt)
             score = self.score
         })
     end
+        
+    --makes sure that the bird can not go above the screen
+    if self.bird.y < 0 then
+        self.bird.y = 0
+    end
 
 -- Pause and unpause
     if love.keyboard.wasPressed('p') then
